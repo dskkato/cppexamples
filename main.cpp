@@ -1,27 +1,12 @@
 #include "Shape.hpp"
-#include "Square.hpp"
-#include "Circle.hpp"
-#include "Shapes.hpp"
-
-void draw(const Shape &shape)
-{
-    shape.draw();
-}
+#include "ShapeCategory.hpp"
+#include "ShapeFactory.hpp"
 
 int main()
 {
-    Square square;
-    Circle circle;
+    auto shape = ShapeFactory::create(ShapeCategory::Square);
 
-    draw(square);
-    draw(circle);
-
-    Shapes shapes;
-
-    shapes.add(&square);
-    shapes.add(&circle);
-
-    draw(shapes);
+    shape->draw();
 
     return 0;
 }
