@@ -2,17 +2,16 @@
 
 #include "Shape.hpp"
 #include <vector>
+#include <memory>
 
 class Shapes final : public Shape
 {
 public:
-    Shapes() = default;
+    Shapes();
     ~Shapes() = default;
 
     void draw() const override;
 
-    void add(Shape const *shape);
-
 private:
-    std::vector<Shape const *> shapes;
+    std::vector<std::unique_ptr<Shape>> shapes;
 };
