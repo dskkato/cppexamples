@@ -1,14 +1,18 @@
 #pragma once
 
-#include "ShapeCategory.hpp"
 #include "Shape.hpp"
 #include <memory>
 
-class ShapeFactory final
+namespace ShapeFactory
 {
-public:
-    static std::unique_ptr<Shape> create(const ShapeCategory);
 
-private:
-    ShapeFactory() = delete;
+enum class ShapeCategory
+{
+    Circle,
+    Square,
+    Shapes
+};
+
+std::unique_ptr<Shape> create(const ShapeCategory);
+
 };

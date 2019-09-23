@@ -1,5 +1,4 @@
 #include "Shape.hpp"
-#include "ShapeCategory.hpp"
 #include "ShapeFactory.hpp"
 
 constexpr void draw(const Shape &shape)
@@ -9,18 +8,21 @@ constexpr void draw(const Shape &shape)
 
 int main()
 {
+    using ShapeFactory::create;
+    using ShapeFactory::ShapeCategory;
+
     {
-        auto shape = ShapeFactory::create(ShapeCategory::Square);
+        auto shape = create(ShapeCategory::Square);
         draw(*shape);
     }
 
     {
-        auto shape = ShapeFactory::create(ShapeCategory::Circle);
+        auto shape = create(ShapeCategory::Circle);
         draw(*shape);
     }
 
     {
-        auto shape = ShapeFactory::create(ShapeCategory::Shapes);
+        auto shape = create(ShapeCategory::Shapes);
         draw(*shape);
     }
     return 0;

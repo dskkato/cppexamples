@@ -3,7 +3,9 @@
 #include "Square.hpp"
 #include "Shapes.hpp"
 
-std::unique_ptr<Shape> ShapeFactory::create(const ShapeCategory shapeCategory)
+namespace ShapeFactory
+{
+std::unique_ptr<Shape> create(const ShapeCategory shapeCategory)
 {
     std::unique_ptr<Shape> ret;
 
@@ -26,3 +28,4 @@ std::unique_ptr<Shape> ShapeFactory::create(const ShapeCategory shapeCategory)
 
     return ret;
 }
+} // namespace ShapeFactory
