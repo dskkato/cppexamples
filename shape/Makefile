@@ -1,20 +1,38 @@
-VPATH = src include inc
+vpath %.cpp src
+vpath %.hpp include inc
 
-CXXFLAGS = -I./inc -I./include -std=c++14
+CPPFLAGS = -I./inc -I./include
+CXXFLAGS = -std=c++14 -O2
+
 library = libshape.a
+sources = Circle.cpp Shapes.cpp Square.cpp ShapeFactory.cpp
+objects = $(subst .cpp,.o,$(sources))
+dependencies = $(subst .o,.d,$(objects))
 
-.PHONY: clean
+.PHONY: library
+library: $(library)
 
-$(library): Circle.o Shapes.o Square.o ShapeFactory.o
+$(library): $(objects)
 	$(AR) rv $@ $^
 
+.PHONY: clean
 clean:
-	$(RM) *.o *.a
+	$(RM) *.o *.a *.d
 
-Circle.o: Circle.cpp Circle.hpp
-Shapes.o: Shapes.cpp Shapes.hpp
-Square.o: Square.cpp Square.hpp
-ShapeFactory.o: ShapeFactory.cpp ShapeFactory.hpp
+ifneq "$(MAKECMDGOALS)" "clean"
+  -include $(dependencies)
+endif
+
+# $(call make-depend,source-file,object-file,depend-file)
+define make-depend
+  $(CXX) -MM -MF $3 \
+  		 -MP -MT $2 \
+  		 $(CXXFLAGS) \
+		 $(CPPFLAGS) \
+		 $(TARGET_ARCH) \
+		 $1
+endef
 
 %.o: %.cpp
+	$(call make-depend,$<,$@,$(subst .o,.d,$@))
 	$(COMPILE.cpp) $<
