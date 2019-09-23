@@ -1,13 +1,15 @@
+RM		= rm -r
+
 vpath %.cpp src
 vpath %.hpp include inc
 
 CPPFLAGS = -I./inc -I./include
 CXXFLAGS = -std=c++14 -O2
 
-library = libshape.a
-sources = Circle.cpp Shapes.cpp Square.cpp ShapeFactory.cpp
-objects = $(subst .cpp,.o,$(sources))
-dependencies = $(subst .o,.d,$(objects))
+sources			:= Circle.cpp Shapes.cpp Square.cpp ShapeFactory.cpp
+library			:= libshape.a
+objects			:= $(subst .cpp,.o,$(sources))
+dependencies	:= $(subst .o,.d,$(objects))
 
 .PHONY: library
 library: $(library)
@@ -35,4 +37,4 @@ endef
 
 %.o: %.cpp
 	$(call make-depend,$<,$@,$(subst .o,.d,$@))
-	$(COMPILE.cpp) $<
+	$(COMPILE.cpp) $< 
