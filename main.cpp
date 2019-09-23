@@ -1,7 +1,7 @@
 #include "Shape.hpp"
 #include "ShapeFactory.hpp"
 
-constexpr void draw(const Shape &shape)
+void draw(const Shape &shape)
 {
     shape.draw();
 }
