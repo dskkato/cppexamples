@@ -19,4 +19,4 @@ clean:
 	$(MAKE) clean --directory shape
 	$(RM) a.out $(objects) $(dependencies)
 
-include ./common.mk
+include ../common.mk

@@ -18,4 +18,4 @@ $(library): $(objects)
 clean:
 	$(RM) $(objects) $(dependencies) $(library)
 
-include ../common.mk
+include ../../common.mk

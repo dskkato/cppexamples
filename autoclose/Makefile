@@ -11,4 +11,4 @@ all: $(objects)
 clean:
 	$(RM) a.out $(objects) $(dependencies)
 
-include ./common.mk
+include ../common.mk
