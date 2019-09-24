@@ -1,0 +1,14 @@
+sources			:= main.cpp
+objects			:= $(subst .cpp,.o,$(sources))
+dependencies	:= $(subst .o,.d,$(objects))
+
+.PHONY: all
+all: $(objects)
+	$(LINK.cpp) $^
+	./a.out
+
+.PHONY: clean
+clean:
+	$(RM) a.out $(objects) $(dependencies)
+
+include ./common.mk
