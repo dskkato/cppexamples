@@ -1,6 +1,7 @@
 sources			:= main.cpp
 objects			:= $(subst .cpp,.o,$(sources))
 dependencies	:= $(subst .o,.d,$(objects))
+
 CPPFLAGS		+= -I/usr/local/include/eigen3
 
 .PHONY: all
