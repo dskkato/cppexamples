@@ -2,6 +2,7 @@
 
 * [autoclose](autoclose)
 * [composite](composite)
+* [eigen\_example](eigen_example)
 
 ## Build & run
 
