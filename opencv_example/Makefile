@@ -1,11 +1,13 @@
 sources			:= main.cpp
 objects			:= $(subst .cpp,.o,$(sources))
 dependencies	:= $(subst .o,.d,$(objects))
+
 CPPFLAGS		+= -I/usr/local/include/opencv4
+LDFLAGS			+= -lopencv_core -lopencv_imgcodecs
 
 .PHONY: all
-all: $(objects)
-	$(LINK.cpp) $^ -lopencv_core -lopencv_imgcodecs
+all: $(objects) 
+	$(LINK.cpp) $^
 	./a.out
 
 .PHONY: clean

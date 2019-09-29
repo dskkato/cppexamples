@@ -1,14 +1,15 @@
-CPPFLAGS		:= -I./shape/include
-
 sources			:= main.cpp
 libraries		:= shape
 objects			:= $(subst .cpp,.o,$(sources))
 dependencies	:= $(subst .o,.d,$(objects))
 
+CPPFLAGS		+= -I./shape/include
+LDFLAGS			+= -L./shape -lshape
+
 .PHONY: all
 all: $(objects)
 	$(MAKE) --directory shape
-	$(LINK.cpp) $^ -L./shape -lshape
+	$(LINK.cpp) $^
 	./a.out
 
 # todo: add appropriate library build...
