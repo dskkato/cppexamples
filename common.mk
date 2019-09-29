@@ -1,6 +1,6 @@
 RM		= rm -rf
 
-CXXFLAGS = -std=c++14 -O2 -Wall -Wextra
+CXXFLAGS	+= -std=c++14 -O2 -Wall -Wextra
 
 ifneq "$(MAKECMDGOALS)" "clean"
   -include $(dependencies)
