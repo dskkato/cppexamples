@@ -3,7 +3,7 @@
 * [autoclose](autoclose)
 * [composite](composite)
 * [eigen\_example](eigen_example)
-* [cv\_example](cv_example)
+* [opencv\_example](opencv_example)
 
 ## Build & run
 
