@@ -8,9 +8,6 @@ library			:= libshape.a
 objects			:= $(subst .cpp,.o,$(local_src))
 dependencies	:= $(subst .o,.d,$(objects))
 
-.PHONY: library
-library: $(library)
-
 $(library): $(objects)
 	$(AR) $(ARFLAGS) $@ $^
 
