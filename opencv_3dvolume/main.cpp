@@ -29,6 +29,7 @@ int main()
         }
     }
 
+    // for (int i0 = 0; i0 < sizes[0] + 1; i0++)
     for (int i0 = 0; i0 < sizes[0]; i0++)
     {
         const int step0 = i0 * steps[0];
