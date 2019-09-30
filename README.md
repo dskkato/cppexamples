@@ -3,7 +3,8 @@
 * [autoclose](autoclose)
 * [composite](composite)
 * [eigen\_example](eigen_example)
-* [opencv\_example](opencv_example)
+* [opencv\_imgprocs](opencv_imgprocs)
+* [opencv\_3dvolume](opencv_3dvolume)
 
 ## Build & run
 
