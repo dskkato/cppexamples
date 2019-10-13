@@ -36,7 +36,7 @@ void Camera::start()
         return;
     }
     running = true;
-    fut = std::async(std::launch::async, [&]() {
+    fut = std::async(std::launch::async, [this]() {
         while (this->running)
         {
             // std::this_thread::sleep_for(std::chrono::milliseconds(WAIT_MS));
