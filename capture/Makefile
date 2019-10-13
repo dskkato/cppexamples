@@ -1,0 +1,20 @@
+sources			:= main.cpp camera.cpp
+objects			:= $(subst .cpp,.o,$(sources))
+dependencies	:= $(subst .o,.d,$(objects))
+
+CPPFLAGS		+= -I/usr/local/include/opencv4
+LDFLAGS			+= $(objects) \
+				-lopencv_core \
+				-lopencv_videoio \
+				-lopencv_imgcodecs
+
+.PHONY: all
+all: $(objects) 
+	$(LINK.cpp)
+	./a.out
+
+.PHONY: clean
+clean:
+	$(RM) a.out $(objects) $(dependencies)
+
+include ../common.mk
