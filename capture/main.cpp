@@ -8,6 +8,7 @@
 #include <opencv2/imgcodecs.hpp>
 
 using namespace std;
+constexpr size_t NUM_CAPTURE = 3;
 
 int main(int, char **)
 {
@@ -18,14 +19,14 @@ int main(int, char **)
         return -1;
     }
 
-    array<cv::Mat, 2> images;
+    array<cv::Mat, NUM_CAPTURE2> images;
 
     camera.start();
 
-    for (auto i : {1, 2})
+    for (auto &image : images)
     {
         const cv::Mat &frame = camera.getFrame();
-        frame.copyTo(images[i - 1]);
+        frame.copyTo(image);
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
     camera.stop();
@@ -33,8 +34,8 @@ int main(int, char **)
     while (camera.isRunning())
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
-    cv::imwrite("0.png", images[0]);
-    cv::imwrite("1.png", images[1]);
+    for (size_t i = 0; i < images.size(); i++)
+        cv::imwrite(to_string(i) + ".png", images[1]);
 
     return 0;
 }
